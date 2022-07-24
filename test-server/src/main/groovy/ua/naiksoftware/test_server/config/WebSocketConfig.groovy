@@ -23,8 +23,8 @@ class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
         long[] heartbeat = [ 30000, 30000 ];
         config.enableSimpleBroker("/topic", "/queue", "/exchange")
-            .setTaskScheduler(new DefaultManagedTaskScheduler()) // enable heartbeats
-            .setHeartbeatValue(heartbeat); // enable heartbeats
+//            .setTaskScheduler(new DefaultManagedTaskScheduler()) // enable heartbeats
+//            .setHeartbeatValue(heartbeat); // enable heartbeats
 
 //        config.enableStompBrokerRelay("/topic", "/queue", "/exchange"); // Uncomment for external message broker (ActiveMQ, RabbitMQ)
         config.setApplicationDestinationPrefixes("/topic", "/queue"); // prefix in client queries
@@ -33,7 +33,8 @@ class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/example-endpoint").setAllowedOrigins("*").withSockJS()
+        //registry.addEndpoint("/example-endpoint").setAllowedOrigins("*").withSockJS()
+        registry.addEndpoint("/example-endpoint").withSockJS()
     }
 
     @Override
